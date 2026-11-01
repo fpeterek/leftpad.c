@@ -14,6 +14,7 @@ fpmmap:
     movq  $-1,   %r8    # File descriptor -- ignored, but better to set to -1   # ARG 4
     xor   %r9,   %r9    # pgoffset -- should be zero for anonymous mapping      # ARG 5
     syscall             # Perform syscall
+    ret
 
 # void fpmunmap(void* addr, size_t size);
 #               ^ rdi      ^ rsi
@@ -21,3 +22,4 @@ fpmmap:
 fpmunmap:
     movq  $11,  %rax    # munmap syscall
     int   $0x80         # Perform syscall
+    ret
