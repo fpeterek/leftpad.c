@@ -6,7 +6,7 @@
 
 # void* fpmmap(size_t size)
 fpmmap:
-    movq  $9,    %rax   # mmap2 syscall
+    movq  $9,    %rax   # mmap syscall
     movq  %rdi,  %rsi   # Size - move rdi to rsi before we overwrite rdi        # ARG 1
     xor   %rdi,  %rdi   # NULL address                                          # ARG 0
     movq  $3,    %rdx   # Protection -- read/write                              # ARG 2
