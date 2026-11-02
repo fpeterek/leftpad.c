@@ -21,5 +21,5 @@ fpmmap:
 # Arguments should already be in correct registers due to x86 calling conventions
 fpmunmap:
     movq  $11,  %rax    # munmap syscall
-    int   $0x80         # Perform syscall
+    syscall             # Perform syscall
     ret
