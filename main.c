@@ -1,22 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #include "fpmalloc.h"
+#include "leftpad.h"
 
 
-
-int main() {
-    int* mem = fpmmap(4096);
+void test_malloc() {
+    int* mem = fpmalloc(4096);
 
     if (mem == NULL) {
         puts("Null");
-        return -1;
-    }
-
-    if (mem == (int*)-1) {
-        puts("Mmap failed");
-        return -1;
+        exit(-1);
     }
 
     printf("%p\n", mem);
@@ -32,5 +26,23 @@ int main() {
     printf("[%d]: %d\n", 500, mem[500]);
     printf("[%d]: %d\n", 1000, mem[1000]);
 
-    fpmunmap(mem, 4096);
+    fpfree(mem);
+}
+
+
+int main() {
+    char padded[256] = "*********************************************";
+    leftpad("abcd", '.', 8, padded, 5);
+
+    puts(padded);
+
+    leftpad("abcd", '.', 8, padded, 9);
+
+    puts(padded);
+
+    char* p = leftpad_a("str", '.', 10);
+
+    puts(p);
+
+    fpfree(p);
 }
