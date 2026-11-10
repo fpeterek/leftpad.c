@@ -1,5 +1,8 @@
 #include "leftpad.h"
 
+#include "fpstring.h"
+#include "fpmalloc.h"
+
 
 ssize smax(ssize x, ssize y) {
     if (x > y) {
@@ -27,14 +30,6 @@ usize min(usize x, usize y) {
         return x;
     }
     return y;
-}
-
-usize string_len(const char* str) {
-    usize len = 0;
-
-    for (; str[len] != 0; ++len) { }
-
-    return len;
 }
 
 

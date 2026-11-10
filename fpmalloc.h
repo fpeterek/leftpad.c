@@ -1,8 +1,7 @@
 #ifndef FP_MALLOC
 #define FP_MALLOC
 
-typedef unsigned long long usize;
-typedef long long ssize;
+#include "intdef.h"
 
 
 void* fpmmap(usize size);
